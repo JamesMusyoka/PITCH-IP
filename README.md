@@ -30,7 +30,7 @@ For further explanation check on ()
 
 ## View Live Site here
 
-View the complete site [here]
+View the complete site [here]  https://git.heroku.com/jamopitch.git'
 
 ## Technologies Used
 
