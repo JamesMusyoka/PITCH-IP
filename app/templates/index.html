@@ -2,16 +2,16 @@
 
 
 {% block content %}
-<body style="background-image: url('static/images/bg.jpg');">
+<body style="background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fjcutrer.com%2Fwp-content%2Fuploads%2F2017%2F08%2Fexplore-this-world-wallpaper-3840x2160-photo-by-ian-dooley.jpg&imgrefurl=https%3A%2F%2Fjcutrer.com%2Fwallpaper%2F528873711900&docid=i48SPDfuulQVCM&tbnid=X5ADXxk_X6obWM%3A&vet=10ahUKEwiivoeS1rXgAhUQlxQKHc86BqkQMwh0KCkwKQ..i&w=3840&h=2160&client=ubuntu&bih=602&biw=1366&q=explore%20images%20wallpaper&ved=0ahUKEwiivoeS1rXgAhUQlxQKHc86BqkQMwh0KCkwKQ&iact=mrc&uact=8');">
     <div id="pageintro" class="hoc clear">
       <article>
-        <p>Welcome to Pitch Thriller.</p>
+        <h1>Welcome to Pitch Thriller.</h1>
         <footer>
             {%if current_user.is_authenticated %}
 
           <ul class="nospace inline pushright">
             <li><a class="btn" href="/post">View Pitches</a></li> 
-            <li><a class="btn" href="/post/{{current_user.id}}">My Pitches</a></li> 
+            <li><a class="btn" href="/post/{{current_user.username}}">My Pitches</a></li> 
 
             {% else%}</ul>
             <ul class="nospace inline pushright">
