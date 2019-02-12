@@ -2,9 +2,9 @@ from flask_login import login_required, current_user
 from .forms import PostForm
 from .. import db, photos
 from . import main
-from app.models import User
+from ..models import User
 
-@main.route('/index', methods=['GET', 'POST'])
+@main.route('/index.html', methods=['GET', 'POST'])
 def home():
     form = PostForm()
     if form.validate_on_submit():
@@ -19,6 +19,23 @@ def home():
     # posts = Pitch.retrieve_posts(id).all()
 
     return render_template("posts.html", title='Home Page', form=form, posts=posts)
+
+@main.route('/')
+@login_required
+def index():
+
+    title = 'WELCOME TO JAMOPITCH'
+# 'test':TestConfig
+# posts = [
+#     {
+#         'author': {'username': 'Phanise'}
+#         'body': 'Beautiful day in Holland!'
+#         },
+#         {
+#             'author': {'username': 'James' },
+#             'body': 'The Original Series was cool'
+#             }
+#             ]
 
 @main.route('/post', methods=['GET', 'POST'])
 @login_required
@@ -37,14 +54,14 @@ def post():
 
     return render_template('post.html', form=form)
 
-@main.route('/post/<int:id>', methods=['GET', 'POST'])
-@login_required
-def user_post(id):
+@main.route('/index.html', methods=['GET', 'POST'])
+# @login_required
+def pitch():
     form = PostForm()
     if form.validate_on_submit():
-       post = form.post.data
-       category = form.category.data
-       user = current_user
+    #    post = form.post.data
+    #    category = form.category.data
+    #    user = current_user
 
 
        new_pitch = Pitch(body = post,category = category,user = user)
@@ -53,9 +70,9 @@ def user_post(id):
        db.session.add(new_pitch)
        db.session.commit()
 
-       return redirect(url_for('main.explore',uname = user.username))
-    # users_post = Pitch.query.filter_by(user_id=id).all()
-    return render_template('user_posts.html', users_post=users_post)
+    life = Pitch.query.filter_by(category='index.html')
+     # users_post = Pitch.query.filter_by(user_id=id).all()
+    return render_template('user_index.html', title = 'title',form=form)
 
     @main.route('/user/<uname>')
     def profile(uname):
