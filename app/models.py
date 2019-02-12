@@ -1,4 +1,4 @@
-from . import db
+from . import db,login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
@@ -21,6 +21,10 @@ class User(UserMixin, db.Model):
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
+    
 
     @property
     def password(self):
@@ -28,9 +32,9 @@ class User(UserMixin, db.Model):
 
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password)
 
-    def verify_password(self, password):
+    def check_password(self, password):
             return check_password_hash(self.pass_secure, password)
 
     def __repr__(self):
@@ -50,7 +54,7 @@ class Role(db.Model):
 
 class pitch(db.Model):
 
-    __tablename__ = 'pitch'
+    __tablename__ = 'pitches'
 
     id = db.Column(db.Integer, primary_key=True)
     movie_id = db.Column(db.Integer)
@@ -61,7 +65,7 @@ class pitch(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
-
+    @classmethod
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
@@ -74,11 +78,18 @@ class pitch(db.Model):
         return Pitch.query.all()
 
     @classmethod
-    def get_pitches_by_category(cls,category_id):
+    def retrieve_posts(cls,id):
         '''
         Function that queries the databse and returns pitches based on the
         category 
         '''
 
-        pitch = Pitch.query.filter_by(category_id).all()
-        return pitch
+        pitch = Pitch.query.filter_by(id=id).all()
+        return pitches
+
+class Comments(db.Model):
+    __tablename__='comments'
+    id = db.Column(db.Integer,primary_key= True)
+    details = db.Column(db.String(255))
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
