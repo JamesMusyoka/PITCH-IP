@@ -5,7 +5,7 @@ from . import main
 from ..models import User
 from flask import render_template,request,flash,redirect,url_for
 
-@main.route('/post', methods=['GET', 'POST'])
+@main.route('/index', methods=['GET', 'POST'])
 def home():
     form = PostForm()
     if form.validate_on_submit():
@@ -19,7 +19,7 @@ def home():
 
     # posts = Pitch.retrieve_posts(id).all()
 
-    return render_template("posts.html", title='Home Page', form=form, posts=posts)
+    return render_template("index.html", title='Home Page', form=form, posts=posts)
 
 @main.route('/')
 # @login_required
