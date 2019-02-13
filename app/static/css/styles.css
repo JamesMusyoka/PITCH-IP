@@ -1,4 +1,4 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+/* @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
 
 
@@ -18,5 +18,9 @@
 
 body{
     font-size: 18px;
-    background-image: url("https://www.desktopbackground.org/p/2013/06/21/595490_explore-tumblr-2560x1440-hd-wallpapers-and-free-stock-photo_2560x1440_h.jpg");
-}
+    background-image: url("http://p1.pichost.me/i/66/1910819.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
+} */
