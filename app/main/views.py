@@ -3,8 +3,9 @@ from .forms import PostForm
 from .. import db, photos
 from . import main
 from ..models import User
+from flask import render_template,request,flash,redirect,url_for
 
-@main.route('/index.html', methods=['GET', 'POST'])
+@main.route('/post', methods=['GET', 'POST'])
 def home():
     form = PostForm()
     if form.validate_on_submit():
@@ -21,10 +22,11 @@ def home():
     return render_template("posts.html", title='Home Page', form=form, posts=posts)
 
 @main.route('/')
-@login_required
+# @login_required
 def index():
 
     title = 'WELCOME TO JAMOPITCH'
+    return render_template('index.html', title = 'title')
 # 'test':TestConfig
 # posts = [
 #     {
@@ -54,25 +56,25 @@ def post():
 
     return render_template('post.html', form=form)
 
-@main.route('/index.html', methods=['GET', 'POST'])
-# @login_required
-def pitch():
-    form = PostForm()
-    if form.validate_on_submit():
-    #    post = form.post.data
-    #    category = form.category.data
-    #    user = current_user
+# @main.route('/index.html', methods=['GET', 'POST'])
+# # @login_required
+# def pitch():
+#     form = PostForm()
+#     if form.validate_on_submit():
+#     #    post = form.post.data
+#     #    category = form.category.data
+#     #    user = current_user
 
 
-       new_pitch = Pitch(body = post,category = category,user = user)
+#        new_pitch = Pitch(body = post,category = category,user = user)
 
-       # save pitch
-       db.session.add(new_pitch)
-       db.session.commit()
+#        # save pitch
+#        db.session.add(new_pitch)
+#        db.session.commit()
 
-    life = Pitch.query.filter_by(category='index.html')
-     # users_post = Pitch.query.filter_by(user_id=id).all()
-    return render_template('user_index.html', title = 'title',form=form)
+#     life = Pitch.query.filter_by(category='index.html')
+#      # users_post = Pitch.query.filter_by(user_id=id).all()
+#     return render_template('user_index.html', title = 'title',form=form)
 
     @main.route('/user/<uname>')
     def profile(uname):
@@ -111,3 +113,51 @@ def pitch():
             user.profile_pic_path = path
             db.session.commit()
         return redirect(url_for('main.profile', uname=uname))
+
+    @main.route('/technology' ,methods = ['GET','POST'])
+    def technology():
+        technology = Pitch.query.filter_by(category = 'Technology').all()
+        form = CommentForm()
+        if form.validate_on_submit():
+            details = form.details.data
+            user = current_user
+            
+            new_comment = Comments(details = details,pitch_id=id,user =user)
+            db.session.add(new_comment)
+            db.session.commit()
+        
+        return render_template('technology.html', technology = technology,form=form)
+
+    @main.route('/interview' ,methods = ['GET','POST'])
+    def business():
+        business = Pitch.query.filter_by(category = 'business').all()
+        form = CommentForm()
+        if form.validate_on_submit():
+            details = form.details.data
+            user = current_user
+
+            new_comment = Comments(details = details,pitch_id=id,user =user)
+            db.session.add(new_comment)
+            db.session.commit()
+
+        return render_template('business.html', business = business,form=form)
+
+    @main.route('/pickuplines' ,methods = ['GET','POST'])
+    def pickuplines():
+        
+        form = CommentForm()
+        if form.validate_on_submit():
+            details = form.details.data
+            user = current_user
+            
+            new_comment = Comments(details = details,pitch_id=id,user =user)
+            db.session.add(new_comment)
+            db.session.commit()
+            
+        pickuplines = Pitch.query.filter_by(category = 'Pickuplines').all()
+            
+        if pickuplines is None:
+            abort(404)
+
+        return render_template('pickuplines.html', pickuplines = pickuplines,form=form)
+

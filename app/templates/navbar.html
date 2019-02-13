@@ -1,4 +1,45 @@
-<
+<style>
+#mainav li{
+  display:inline-block;
+  position:relative; 
+  margin:0 15px 0 0; 
+  padding:0;
+}
+.sidebar nav{
+  display:block; 
+  width:100%;
+}
+.sidebar nav li{
+  margin:0 0 3px 0; 
+  padding:0;
+}
+.sidebar nav a{
+  display:block; 
+  position:relative; 
+  margin:0; 
+  padding:5px 10px 5px 15px; 
+  text-decoration:none; 
+  border:solid; 
+  border-width:0 0 1px 0;
+}
+.sidebar nav a::after{
+  top:9px; 
+  left:5px; 
+  content:"\f101";
+}
+.sidebar nav ul ul a{
+  padding-left:35px;
+}
+.sidebar nav ul ul a::after{
+  left:25px;
+}
+.sidebar nav ul ul ul a{
+  padding-left:55px;
+}
+.sidebar nav ul ul ul a::after{
+  left:45px;
+}
+</style>
   <div class="body_wrapper">
       <div class="topspacer bgded overlay" style="background-image:url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fjcutrer.com%2Fwp-content%2Fuploads%2F2017%2F08%2Fexplore-this-world-wallpaper-3840x2160-photo-by-ian-dooley.jpg&imgrefurl=https%3A%2F%2Fjcutrer.com%2Fwallpaper%2F528873711900&docid=i48SPDfuulQVCM&tbnid=X5ADXxk_X6obWM%3A&vet=10ahUKEwiivoeS1rXgAhUQlxQKHc86BqkQMwh0KCkwKQ..i&w=3840&h=2160&client=ubuntu&bih=602&biw=1366&q=explore%20images%20wallpaper&ved=0ahUKEwiivoeS1rXgAhUQlxQKHc86BqkQMwh0KCkwKQ&iact=mrc&uact=8');"> 
         <div class="wrapper row0">
@@ -26,3 +67,14 @@
             <div id="logo" class="fl_left">
               <h1><a href="/">Pitch Thriller</a></h1>
             </div>
+            <ul class="clear">
+              <li><a class="active" href="/pickuplines" style="display:inline-block;position:relative; margin:0 15px 0 0; padding:0;">Pickup Lines</a>
+
+              </li>
+              <li><a href="/sales" style="display:inline-block;position:relative; margin:0 15px 0 0; padding:0;">SALES</a>
+              </li>
+              <li><a href="/business" style="display:inline-block;position:relative; margin:0 15px 0 0; padding:0;">BUSINESS</a></li>
+              <li><a href="/technology"style="display:inline-block;position:relative; margin:0 15px 0 0; padding:0;">TECHNOLOGY</a></li>
+            </ul>
+          </nav>
+        </header>
