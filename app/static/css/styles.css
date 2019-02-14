@@ -18,9 +18,12 @@
 
 body{
     font-size: 18px;
-    background-image: url("http://p1.pichost.me/i/66/1910819.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;  
 }
+ul, li{
+    text-align: center;
+
+  }
