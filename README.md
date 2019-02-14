@@ -1,8 +1,8 @@
-## Pitch-Ip
+# Pitch-Ip
 
 One minute pitch is an interactive app whereby users can share on their creative pitches
 
-# User stories
+## User stories
 
     * As a user, I would like to see the pitches other people have posted.
     * As a user, I would like to vote on the pitch they liked and give it  a downvote or upvote.
@@ -30,7 +30,7 @@ For further explanation check on ()
 
 ## View Live Site here
 
-View the complete site [here]  https://git.heroku.com/jamopitch.git'
+View the complete site [here] https://jamespitchip.herokuapp.com/
 
 ## Technologies Used
 

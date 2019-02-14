@@ -5,26 +5,26 @@ from app import db
 class UserModelTest(unittest.TestCase):
         
         def setUp(self):
-#         self.user_James = User(id=1,username = 'James',password = 'potato', email = 'james@ms.com')
-#         # self.new_review = Review(movie_id=12345,movie_title='Review for movies',image_path="https://image.tmdb.org/t/p/w500/jdjdjdjn",movie_review='This movie is the best thing since sliced bread',user = self.user_James )
+        self.user_James = User(id=1,username = 'James',password = 'potato', email = 'james@ms.com')
+        # self.new_review = Review(movie_id=12345,movie_title='Review for movies',image_path="https://image.tmdb.org/t/p/w500/jdjdjdjn",movie_review='This movie is the best thing since sliced bread',user = self.user_James )
 
-# def tearDown(self):
-#         # Review.query.delete()
-#         User.query.delete()
+def tearDown(self):
+        # Review.query.delete()
+        User.query.delete()
 
-# def test_check_instance_variables(self):
-#         self.assertEquals(self.user_James.username,James)
-#         self.assertEquals(self.user_James.password,'potato')
-#         self.assertEquals(self.user_James.image_path,"https://image.tmdb.org/t/p/w500/jdjdjdjn")
-#         self.assertEquals(self.new_review.movie_review,'This movie is the best thing since sliced bread')
-#         self.assertEquals(self.new_review.user,self.user_James)
+def test_check_instance_variables(self):
+        self.assertEquals(self.user_James.username,James)
+        self.assertEquals(self.user_James.password,'potato')
+        self.assertEquals(self.user_James.image_path,"https://image.tmdb.org/t/p/w500/jdjdjdjn")
+        self.assertEquals(self.new_review.movie_review,'This movie is the best thing since sliced bread')
+        self.assertEquals(self.new_review.user,self.user_James)
  
-# def test_save_pitch(self):
-#         self.new_james.save_review()
-#         self.assertTrue(len(User.query.all())>0)
+def test_save_pitch(self):
+        self.new_james.save_review()
+        self.assertTrue(len(User.query.all())>0)
 
-# def test_get_user_by_id(self):
+def test_get_user_by_id(self):
 
-#         self.new_james.save_review()
-#         fetched_user = User.get_user()
-#         self.assertTrue(len(fetched_user) == 1)
+        self.new_james.save_review()
+        fetched_user = User.get_user()
+        self.assertTrue(len(fetched_user) == 1)
