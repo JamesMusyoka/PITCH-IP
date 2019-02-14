@@ -3,24 +3,25 @@
 
 {% block content %}
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
+
 <body>
     <div id="pageintro" class="hoc clear">
       <article>
-        <h1>Welcome to Pitch Thriller.</h1>
+        <h1 style="text-align:center">Welcome to Pitch Thriller.</h1>
         <footer>
             {%if current_user.is_authenticated %}
 
           <ul class="nospace inline pushright">
-            <li><a class="btn" href="/post">View Pitches</a></li> 
-            <li><a class="btn" href="/post/{{current_user.username}}">My Pitches</a></li> 
+            <li style="text-align:left; color:blue;"><a class="btn" href="#{{current_user.username}}">View Pitches</a></li> 
+            <li style="text-align:left; color:blue;"><a class="btn" href="#{{current_user.username}}">My Pitches</a></li> 
 
-            {% else%}</ul>
+          </ul>{% else%}
             <ul class="nospace inline pushright">
-                <li><a class="btn" href="/post">View Pitches</a></li> 
+                <li style="text-align:left; color:blue;"><a class="btn" href="#">View Pitches</a></li> 
 
             
           </ul>{%endif %}
-          <li><a class="btn inverse" href="{{url_for('auth.register')}}">Join us today</a></li>
+          <li style="text-align:left; color:blue;"><a class="btn inverse" href="{{url_for('auth.register')}}">Join us today</a></li>
         </footer>
       </article>
     </div>
