@@ -1,9 +1,12 @@
 from flask_login import login_required, current_user
 from .forms import PostForm
-from .. import db, photos
-from flask import render_template
+from .. import db
+from flask import Flask,render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User
+from ..models import User,Role
+# from flask_wtf import FlaskForm
+# from wtforms import StringField,PasswordField,BooleanField
+# from wtforms.validators import InputRequired,Email,Length
 
 @main.route('/index', methods=['GET', 'POST'])
 def home():
@@ -39,8 +42,8 @@ def index():
 # #             }
 # #             ]
 
-    return render_template('index.html')
-@main.route('/post', methods=['GET', 'POST'])
+    return render_template('index.html', title = title, index = index)
+@main.route('/post/int<int:id>', methods=['GET', 'POST'])
 @login_required
 def post():
     form = PostForm()
@@ -48,6 +51,8 @@ def post():
         post = form.post.data
         category = form.category.data
         user = current_user
+
+
         new_pitch = Pitch(body=post, category=category, user=user)
 
         # save pitch
@@ -77,7 +82,7 @@ def post():
 #      # users_post = Pitch.query.filter_by(user_id=id).all()
 #     return render_template('user_index.html', title = 'title',form=form)
 
-    @main.route('/user/<uname>')
+    @main.route('/user/<username>')
     def profile(uname):
         user = User.query.filter_by(username=uname).first()
 
@@ -115,7 +120,7 @@ def post():
             db.session.commit()
         return redirect(url_for('main.profile', uname=uname))
 
-    @main.route('/technology' ,methods = ['GET','POST'])
+    @main.route('/technology.html' ,methods = ['GET','POST'])
     def technology():
         technology = Pitch.query.filter_by(category = 'Technology').all()
         form = CommentForm()
@@ -129,7 +134,7 @@ def post():
         
         return render_template('technology.html', technology = technology,form=form)
 
-    @main.route('/interview' ,methods = ['GET','POST'])
+    @main.route('/business' ,methods = ['GET','POST'])
     def business():
         business = Pitch.query.filter_by(category = 'business').all()
         form = CommentForm()
@@ -143,7 +148,7 @@ def post():
 
         return render_template('business.html', business = business,form=form)
 
-    @main.route('/pickuplines' ,methods = ['GET','POST'])
+    @main.route('/pickuplines.html' ,methods = ['GET','POST'])
     def pickuplines():
         
         form = CommentForm()
